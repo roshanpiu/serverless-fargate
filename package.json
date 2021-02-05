@@ -8,6 +8,7 @@
     "deploy": "serverless deploy --aws-profile serverless"
   },
   "dependencies": {
+    "aws-sdk": "^2.838.0",
     "serverless-offline": "^6.8.0",
     "serverless-plugin-scripts": "^1.0.2",
     "serverless-pseudo-parameters": "^2.5.0",

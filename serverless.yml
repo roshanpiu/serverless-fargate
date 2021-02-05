@@ -101,6 +101,9 @@ stepFunctions:
                     Cpu: 1
                     Memory: 512
                     MemoryReservation: 512
+                    Environment:
+                      - Name: TASK_TOKEN
+                        Value.$: "$$.Task.Token"
             Next: 'notifySuccess'
           notifySuccess:
             Type: Task
@@ -333,6 +336,12 @@ resources:
                   - 'logs:CreateLogGroup'
                   - 'logs:CreateLogStream'
                   - 'logs:PutLogEvents'
+                Resource: '*'
+              - Effect: Allow
+                Action:
+                  - 'states:SendTaskSuccess'
+                  - 'states:SendTaskFailure'
+                  - 'states:SendTaskHeartbeat'
                 Resource: '*'
 
     # This is a log group to which logs are saved.
